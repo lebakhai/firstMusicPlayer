@@ -1,7 +1,14 @@
+{ "album": [
+    {"id": 0,
+    "title": "Tuyu - What if this isn't a slave?",
+    "artist": "Tuyu",
+    "image": "https://i.ytimg.com/vi/4tT0j_-42Ac/maxresdefault.jpg",
+    "music": "https://github.com/lebakhai13/firstMusicPlayer/raw/main/assets/music/tuyu-slave.mp3"
+},
 {
-    "id": 0,
-    "title": "",
-    "artist": "",
-    "image": "",
-    "music": ""
-}
+    "id": 1,
+    "title": "Yoasobi - Tracing A Dream",
+    "artist": "Yoasobi",
+    "image": "https://upload.wikimedia.org/wikipedia/en/2/2d/Ano_Yume_o_Nazotte_cover_art.jpg",
+    "music": "https://github.com/lebakhai13/firstMusicPlayer/raw/main/assets/music/yoasobi-yume.mp3"
+}]}

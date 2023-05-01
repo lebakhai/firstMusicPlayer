@@ -5,11 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
-    
-    <script src="./assets/js/app.js"></script>
+    <div id="content">
+        <header class="header">
+            <div class="back btn"><i class="fa-solid fa-arrow-left"></i></div>
+            <div class="header-item">
+                <img class="img">
+                <span class="header-title">Playing Now</span>
+            </div>
+        </header>
+        <div class="content">
+            <div class="info">
+                <div class="img-wrap">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/5/5c/Imagine-Dragons-Believer-art.jpg" alt="IMG" class="img">
+                </div>
+                <div class="info-content">
+                    <h2 class="title">Believer</h2>
+                    <div class="artist">IMAGINE DRAGON</div>
+                    <div class="like"><i class="fa-regular like-icon fa-heart"></i></div>
+                </div>
+            </div>
+            <div class="control">
+                <div class="control-header">
+                    <div class="mute"><i class="fa-solid fa-volume-high"></i></div>
+                    <div class="player-control-btns">
+                        <i class="fa-regular like-icon fa-heart"></i>
+                        <i class="fa-solid fa-repeat icon"></i>
+                        <i class="fa-solid fa-shuffle icon"></i>
+                    </div>
+                </div>
+                <div class="control-body">
+                    <div class="timebar">
+                        <div class="timebar-numbers">
+                            <div class="timebar-number current">13:12</div>
+                            <div class="timebar-number total">20:08</div>
+                        </div>
+                        <div class="timebar-line">
+                            <div class="timebar-line current">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-footer">
+                    <div class="control-track">
+                        <i class="fa-solid fa-backward-step"></i>
+                        <i class="fa-regular fa-circle-play"></i>
+                        <i class="fa-solid fa-forward-step"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            
+        </footer>
+    </div>
+    <!-- <script src="./assets/js/app.js"></script> -->
 </body>
 </html>

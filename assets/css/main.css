@@ -1,0 +1,165 @@
+#content {
+    background-color: #091227;
+    min-height: 100vh;
+    color: #EAF0FF;
+    overflow: hidden;
+}
+
+i {
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.icon {
+    color: #4c5773;
+}
+
+.icon.active {
+    color: #EAF0FF;
+}
+
+.header {
+    width: 100vw;
+    height: auto;
+    padding: 24px;
+    position: relative;
+    background-color: transparent;
+    text-align: center;
+}
+
+.header .header-title {
+
+}
+
+.header .back.btn {
+    position: absolute;
+}
+
+.info {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 3vh;
+}
+
+.info .img-wrap {
+    width: 25vw;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+}
+
+.img-wrap .img {
+    height: 100%;
+    border-radius: 12px;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.1));
+    object-fit: cover;
+}
+
+.info-content {
+    --margin-size: 32px;
+    margin-top: 36px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin-left: var(--margin-size);
+    margin-right: var(--margin-size);
+}
+
+.info-content .title {
+    line-height: 40px;
+}
+
+.info-content .artist {
+    
+}
+
+.info-content .like {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    font-size: 24px;
+}
+
+.control-header {
+    display: flex;
+    padding: 24px;
+    justify-content: space-between;
+    margin-top: 36px;
+}
+
+.mute{
+
+}
+
+.player-control-btns i {
+    margin-right: 36px;
+}
+
+.player-control-btns .like-icon {
+    display: none;
+}
+
+.player-control-btns i:last-child {
+    margin-right: 0;
+}
+
+.control-body {
+    padding: 24px;
+}
+
+.timebar-numbers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.timebar-line {
+    margin-top: 24px;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #555b6a;
+    position: relative;
+}
+
+.timebar-line.current {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #EAF0FF;
+    width: 1%;
+    margin-top: 0;
+}
+
+.timebar-line.current::before {
+    --size: 20px;
+    content: '';
+    background-color: #EAF0FF;
+    width: var(--size);
+    height: var(--size);
+    border-radius: var(--size);
+    display: block;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.control-track {
+    padding: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.control-track i {
+    font-size: 36px;
+}

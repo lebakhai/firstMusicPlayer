@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif; 
+}
+
+@media (min-width: 1024px) {
+    .control-track {
+        padding: 0px 45vw !important;
+        /* margin-top: 64px; */
+    }
+    .player-control-btns .like-icon {
+        display: inline-block !important;
+    }
+    .info-content .like-icon {
+        display: none !important;
+    }
+    .info-content,
+    .control-header,
+    .timebar-line {
+        margin-top: 12px;
+    }
+
+    .control-body {
+        padding-top: 0 !important;
+    }
+}
