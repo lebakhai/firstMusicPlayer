@@ -1,8 +1,12 @@
+:root {
+    --img-size: 130px;
+}
+
 #content {
     background-color: #091227;
     min-height: 100vh;
     color: #EAF0FF;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 i {
@@ -36,6 +40,10 @@ i {
     position: absolute;
 }
 
+.content {
+    padding: 24px;
+}
+
 .info {
     align-items: center;
     display: flex;
@@ -47,17 +55,31 @@ i {
 }
 
 .info .img-wrap {
-    width: 25vw;
-    height: 25vh;
+    width: 50vw;
+    height: 50vw;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.img-wrap .img {
+.img-wrap .img-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
     height: 100%;
     border-radius: 12px;
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.1));
     object-fit: cover;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.img-wrap .img-container .img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 12px;
 }
 
 .info-content {
@@ -124,6 +146,7 @@ i {
     border-radius: 5px;
     background-color: #555b6a;
     position: relative;
+    cursor: pointer;
 }
 
 .timebar-line.current {
@@ -163,3 +186,63 @@ i {
 .control-track i {
     font-size: 36px;
 }
+
+.footer {
+    overflow: hidden;
+    margin: 36px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-item {
+    width: 100%;
+    background-color: #4c5773;
+    border-radius: 12px;
+    padding: 12px;
+    vertical-align: middle;
+    position: relative;
+}
+
+.footer .img-wrap {
+    height: var(--img-size);
+    width: var(--img-size);
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    vertical-align: middle;
+}
+
+.footer .song-img {
+    height: var(--img-size);   
+}
+
+.footer-info {
+    padding: 12px 36px;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.footer-info .song-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footer-info .song-artist {
+    margin-top: 24px;
+}
+
+.footer-like {
+    font-size: 36px;
+    position: absolute;
+    right: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+}
+
+

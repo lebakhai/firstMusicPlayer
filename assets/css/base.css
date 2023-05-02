@@ -2,13 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif; 
+    font-family: sans-serif;
 }
 
 @media (min-width: 1024px) {
     .control-track {
-        padding: 0px 45vw !important;
-        /* margin-top: 64px; */
+        padding: 0px 40vw !important;
     }
     .player-control-btns .like-icon {
         display: inline-block !important;
@@ -25,4 +24,34 @@
     .control-body {
         padding-top: 0 !important;
     }
+    .info .img-wrap {
+        width: 25vh !important;
+        height: 25vh !important;
+    }
+    .img-wrap .img-container {
+        width: auto;
+        height: 100%;
+    }
 }
+
+@media (max-width: 767px) {
+    :root {
+        --img-size: 100px !important;
+    }
+    .song-title {
+        font-size: 16px;
+    }
+    .song-artist {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 479px) {
+    :root {
+        --img-size: 50px !important;
+    }
+    .footer-like {
+        font-size: 24px !important;
+    }
+}
+
