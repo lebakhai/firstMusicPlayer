@@ -3,7 +3,8 @@ const $$ = document.querySelectorAll.bind(document);
 var footerElement = $('.footer');
 var app;
 
-const url = 'http://84.46.246.159:1153/api/data';
+// const url = 'http://84.46.246.159:1153/api/data';
+const url = './db.json';
 const options = {
 	method: 'GET',
 	headers: {
