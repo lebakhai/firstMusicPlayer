@@ -6,27 +6,22 @@
 }
 
 @media (min-width: 1024px) {
-    .control-track {
-        padding: 0px 40vw !important;
-    }
     .player-control-btns .like-icon {
         display: inline-block !important;
-    }
-    .info-content .like-icon {
-        display: none !important;
     }
     .info-content,
     .control-header,
     .timebar-line {
         margin-top: 12px;
     }
-
     .control-body {
         padding-top: 0 !important;
     }
-    .info .img-wrap {
-        width: 25vh !important;
-        height: 25vh !important;
+    .control-footer {
+        /* font-size: 36px; */
+    }
+    .control-track {
+        /* font-size: 48px; */
     }
     .img-wrap .img-container {
         width: auto;
@@ -44,14 +39,24 @@
     .song-artist {
         font-size: 12px;
     }
+    .control-footer {
+        font-size: 12px !important;
+    }
+    .control-track {
+        font-size: 16px;
+    }
 }
 
-@media (max-width: 479px) {
+@media (max-width: 499px) {
     :root {
         --img-size: 50px !important;
     }
     .footer-like {
         font-size: 24px !important;
+    }
+    .info .img-wrap {
+        width:  300px!important;
+        height:  300px!important;
     }
 }
 
