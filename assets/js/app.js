@@ -18,7 +18,15 @@ fetch(url, options)
 .then((data) => data.json())
 .then(data => {
     app = data;
+    app.currentIndex = 0;
     app.render = () => {
+        app.defineProperties = function() {
+            app.defineProperty(app, 'currentSong', {
+                get : function() {
+                    return this.album[this.currentIndex];
+                }
+            });
+        }
         var htmls = app.album.map((song) => {
             return `<div class="footer-item">
             <div class="img-wrap">
@@ -37,6 +45,8 @@ fetch(url, options)
         footerElement.innerHTML = html;
     }
     
+
+
     app.handleEvents = () => {
         const infoElement = $('.info');
         const infoElementWidth = infoElement.offsetHeight;
@@ -45,7 +55,7 @@ fetch(url, options)
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const newInfoElementWidth = infoElementWidth - scrollTop;
             // console.log(infoElementWidth, scrollTop, newInfoElementWidth)
-            infoElement.style.height = newInfoElementWidth + "px";
+            // infoElement.style.height = newInfoElementWidth + "px";
         };
     }
 
