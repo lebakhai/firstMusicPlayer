@@ -132,8 +132,8 @@ fetch(url, options)
         audioElement.ontimeupdate = () => {
             var currentTimeSong = audioElement.currentTime;
             var totalTimeSong = audioElement.duration;
-            audioTotalTimeElement.textContent = `${Math.floor(totalTimeSong / 60)}:${Math.floor(totalTimeSong % 60)}`
-            audioCurrentTimeElement.textContent = `${Math.floor(currentTimeSong / 60)}:${Math.floor(currentTimeSong % 60)}`;
+            audioTotalTimeElement.textContent = `${Math.floor(totalTimeSong / 60).toString().padStart(2, '0')}:${Math.floor(totalTimeSong % 60).toString().padStart(2, '0')}`
+            audioCurrentTimeElement.textContent = `${Math.floor(currentTimeSong / 60).toString().padStart(2, '0')}:${Math.floor(currentTimeSong % 60).toString().padStart(2, '0')}`;
             audioTimeline.style.width = `${(currentTimeSong / totalTimeSong) * 100}%`
         };
     }
@@ -150,7 +150,7 @@ fetch(url, options)
         setTimeout(() => {
             var totalTimeSong = audioElement.duration;
             audioCurrentTimeElement.textContent = "00:00";
-            audioTotalTimeElement.textContent = `${Math.floor(totalTimeSong / 60)}:${Math.floor(totalTimeSong % 60)}`
+            audioTotalTimeElement.textContent = `${Math.floor(totalTimeSong / 60).toString().padStart(2, '0')}:${Math.floor(totalTimeSong % 60).toString().padStart(2, '0')}`
         }, 250)
     }
 
