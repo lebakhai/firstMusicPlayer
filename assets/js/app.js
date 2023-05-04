@@ -92,6 +92,17 @@ fetch(url, options)
                     contentElement.classList.remove('play');
                     app.isPlay = false;
                 }
+            break;
+            case 77:
+                if (app.isMuted === false) {
+                    contentElement.classList.add('muted');
+                    app.isMuted = true;
+                    audioElement.muted = app.isMuted;
+                } else {
+                    contentElement.classList.remove('muted');
+                    app.isMuted = false;
+                    audioElement.muted = app.isMuted;
+                }
             }
         } 
 
