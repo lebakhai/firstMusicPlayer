@@ -7,9 +7,9 @@ const songTitleElement = $('.info-content .title');
 const songArtistElement = $('.info-content .artist');
 const songImageElement = $('.info .img');
 const audioElement = $('#audio');
-const playBtn = $('.songPlay.play');
-const pauseBtn = $('.songPlay.pause');
-const nextSong = $('a');
+const playBtn = $('.songPlay-wrap');
+const nextSongBtn = $('.nextSong');
+const preSongBtn = $('.preSong');
 var app;
 
 // const url = 'http://84.46.246.159:1153/api/data';
@@ -25,9 +25,11 @@ fetch(url, options)
 .then((data) => data.json())
 .then(data => {
     app = data;
-    app.currentIndex = 1;
+    var currentIndex = 1;
+    app.isPlay = false;
+
     
-    app.currentSongFn = () => app.album[app.currentIndex];
+    app.currentSongFn = () => app.album[currentIndex];
 
     app.render = () => {
         var htmls = app.album.map((song) => {
@@ -51,23 +53,55 @@ fetch(url, options)
 
 
     app.handleEvents = () => {
-        const infoElement = $('.info');
-        const infoElementWidth = infoElement.offsetHeight;
+        window.addEventListener('keydown', function(e) {
+            if(e.keyCode == 32 && e.target == document.body) {
+              e.preventDefault();
+            }
+          });
+          
+// control track
 
-        document.onscroll = () => {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            const newInfoElementWidth = infoElementWidth - scrollTop;
-            // console.log(infoElementWidth, scrollTop, newInfoElementWidth)
-            // infoElement.style.height = newInfoElementWidth + "px";
-        };
+        document.onkeydown = (e) => {
+            switch(e.keyCode) {
+            case 32:
+                if (app.isPlay === true) {
+                    audioElement.pause();
+                } else {
+                    audioElement.play();
+                }
+                
+                audioElement.onplay = () => {
+                    contentElement.classList.add('play');
+                    app.isPlay = true;
+                }
+    
+                audioElement.onpause = () => {
+                    contentElement.classList.remove('play');
+                    app.isPlay = false;
+                }
+            }
+        } 
 
         playBtn.onclick = (e) => {
-            contentElement.classList.add('play');
-            audioElement.play();
+            if (app.isPlay === true) {
+                audioElement.pause();
+            } else {
+                audioElement.play();
+            }
+            
+            audioElement.onplay = () => {
+                contentElement.classList.add('play');
+                app.isPlay = true;
+            }
+
+            audioElement.onpause = () => {
+                contentElement.classList.remove('play');
+                app.isPlay = false;
+            }
         };
-        pauseBtn.onclick = (e) => {
-            contentElement.classList.remove('play');
-            audioElement.pause();
+
+        preSongBtn.onclick = (e) => {
+            currentIndex -= 1;
         };
     }
 
