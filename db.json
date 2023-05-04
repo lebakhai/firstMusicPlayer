@@ -4,19 +4,19 @@
     "title": "Tuyu - 8bit collection",
     "artist": "Tuyu",
     "image": "https://cdnb.artstation.com/p/assets/images/images/037/697/817/smaller_square/artech-tuyu.jpg?1621074182",
-    "music": "https://github.com/lebakhai13/firstMusicPlayer/raw/main/assets/music/tuyu-8bit.mp3"
+    "music": "./assets/music/tuyu-8bit.mp3"
 },    
 {"id": 1,
     "title": "Tuyu - What if this isn't a slave?",
     "artist": "Tuyu",
     "image": "https://i.ytimg.com/vi/4tT0j_-42Ac/maxresdefault.jpg",
-    "music": "https://github.com/lebakhai13/firstMusicPlayer/raw/main/assets/music/tuyu-slave.mp3"
+    "music": "./assets/music/tuyu-slave.mp3"
 },
 {
     "id": 2,
     "title": "Yoasobi - Tracing A Dream",
     "artist": "Yoasobi",
     "image": "https://upload.wikimedia.org/wikipedia/en/2/2d/Ano_Yume_o_Nazotte_cover_art.jpg",
-    "music": "https://github.com/lebakhai13/firstMusicPlayer/raw/main/assets/music/yoasobi-yume.mp3"
+    "music": "./assets/music/yoasobi-yume.mp3"
 }
 ]}
