@@ -25,7 +25,7 @@ fetch(url, options)
 .then((data) => data.json())
 .then(data => {
     app = data;
-    var currentIndex = 1;
+    var currentIndex = 2;
     app.isPlay = false;
 
     
