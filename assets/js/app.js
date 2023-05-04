@@ -9,6 +9,7 @@ const songImageElement = $('.info .img');
 const audioElement = $('#audio');
 const playBtn = $('.songPlay.play');
 const pauseBtn = $('.songPlay.pause');
+const nextSong = $('a');
 var app;
 
 // const url = 'http://84.46.246.159:1153/api/data';
