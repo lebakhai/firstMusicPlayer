@@ -1,8 +1,14 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+const contentElement = $('#content')
 const footerElement = $('.footer');
-
+const songTitleElement = $('.info-content .title');
+const songArtistElement = $('.info-content .artist');
+const songImageElement = $('.info .img');
+const audioElement = $('#audio');
+const playBtn = $('.songPlay.play');
+const pauseBtn = $('.songPlay.pause');
 var app;
 
 // const url = 'http://84.46.246.159:1153/api/data';
@@ -18,15 +24,11 @@ fetch(url, options)
 .then((data) => data.json())
 .then(data => {
     app = data;
-    app.currentIndex = 0;
+    app.currentIndex = 1;
+    
+    app.currentSongFn = () => app.album[app.currentIndex];
+
     app.render = () => {
-        app.defineProperties = function() {
-            app.defineProperty(app, 'currentSong', {
-                get : function() {
-                    return this.album[this.currentIndex];
-                }
-            });
-        }
         var htmls = app.album.map((song) => {
             return `<div class="footer-item">
             <div class="img-wrap">
@@ -57,11 +59,29 @@ fetch(url, options)
             // console.log(infoElementWidth, scrollTop, newInfoElementWidth)
             // infoElement.style.height = newInfoElementWidth + "px";
         };
+
+        playBtn.onclick = (e) => {
+            contentElement.classList.add('play');
+            audioElement.play();
+        };
+        pauseBtn.onclick = (e) => {
+            contentElement.classList.remove('play');
+            audioElement.pause();
+        };
+    }
+
+    app.loadCurrentSong = () => {
+        var currentSong = app.currentSongFn();
+        songTitleElement.textContent = currentSong.title;
+        songArtistElement.textContent = currentSong.artist;
+        songImageElement.src = currentSong.image;
+        audioElement.src = currentSong.music;
     }
 
     app.start = () => {
-        app.render();
         app.handleEvents();
+        app.loadCurrentSong()
+        app.render();
     };
     
     app.start();

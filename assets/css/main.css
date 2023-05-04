@@ -64,7 +64,7 @@ i {
 }
 
 .img-wrap .img-container {
-    width: 100%;
+    /* width: 100%; */
     height: auto;
     display: flex;
     justify-content: center;
@@ -187,6 +187,18 @@ i {
 
 .player-control-btns .like-icon {
     
+}
+
+.songPlay.pause {
+    display: none;
+}
+
+#content.play .songPlay.play {
+    display: none !important;
+}
+
+#content.play .songPlay.pause {
+    display: inline-block;
 }
 
 .control-track {
