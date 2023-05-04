@@ -6,9 +6,6 @@
 }
 
 @media (min-width: 1024px) {
-    .player-control-btns .like-icon {
-        display: inline-block !important;
-    }
     .info-content,
     .control-header,
     .timebar-line {
@@ -50,9 +47,6 @@
 @media (max-width: 499px) {
     :root {
         --img-size: 50px !important;
-    }
-    .footer-like {
-        font-size: 24px !important;
     }
     .info .img-wrap {
         width:  300px!important;

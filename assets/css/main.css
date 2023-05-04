@@ -101,13 +101,6 @@ i {
     
 }
 
-.info-content .like {
-    position: absolute;
-    right: 0;
-    top: 12px;
-    font-size: 24px;
-}
-
 .control {
     position: fixed;
     z-index: 5;
@@ -145,7 +138,7 @@ i {
     top: 0;
     bottom: 0;
     background-color: #EAF0FF;
-    width: 1%;
+    width: 0%;
     margin-top: 0;
 }
 
@@ -177,7 +170,7 @@ i {
 .player-control-btns {
     display: flex;
     justify-content: space-evenly;
-    gap: 20px;
+    
 }
 
 .mute-wrap {
@@ -224,6 +217,10 @@ i {
     font-size: 36px;
 }
 
+.control-track .switchSong {
+    font-size: 28px;
+}
+
 .footer {
     overflow: hidden;
     margin: 36px;
@@ -239,6 +236,8 @@ i {
     padding: 12px;
     vertical-align: middle;
     position: relative;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .footer .img-wrap {
@@ -257,10 +256,10 @@ i {
 }
 
 .footer-info {
-    padding: 12px 36px;
+    padding: 12px;
     display: inline-block;
     vertical-align: middle;
-    max-width: 100%;
+    max-width: calc(100% - 70px);
 }
 
 .footer-info .song-title {
@@ -271,15 +270,10 @@ i {
 
 .footer-info .song-artist {
     margin-top: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.footer-like {
-    font-size: 36px;
-    position: absolute;
-    right: 36px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: inline-block;
-}
 
 

@@ -7,6 +7,7 @@ const songTitleElement = $('.info-content .title');
 const songArtistElement = $('.info-content .artist');
 const songImageElement = $('.info .img');
 const audioElement = $('#audio');
+const audioTimeline = $('.timebar-line.current');
 const muteBtn = $('.mute-wrap');
 const playBtn = $('.songPlay-wrap');
 const nextSongBtn = $('.nextSong');
@@ -42,9 +43,6 @@ fetch(url, options)
                 <h2 class="song-title">${song.title}</h2>
                 <div class="song-artist">${song.artist}</div>
             </div>
-            <div class="footer-like">
-                <i class="fa-regular like-icon fa-heart"></i>
-            </div>
         </div>`
         })
         var html = htmls.join(' ');
@@ -79,6 +77,7 @@ fetch(url, options)
             case 32:
                 if (app.isPlay === true) {
                     audioElement.pause();
+                    
                 } else {
                     audioElement.play();
                 }
@@ -127,6 +126,12 @@ fetch(url, options)
         preSongBtn.onclick = (e) => {
             currentIndex -= 1;
         };
+
+        audioElement.ontimeupdate = () => {
+            var totalTimeSong = audioElement.duration;
+            var currentTimeSong = audioElement.currentTime;
+            audioTimeline.style.width = `${(currentTimeSong / totalTimeSong) * 100}%`
+        };
     }
 
     app.loadCurrentSong = () => {
@@ -137,13 +142,18 @@ fetch(url, options)
         audioElement.src = currentSong.music;
     }
 
+    app.songTimeline = () => {
+        var songDuration = audioElement.duration;
+        console.log(songDuration)
+    }
+
     app.start = () => {
         app.handleEvents();
         app.loadCurrentSong()
         app.render();
+        app.songTimeline();
     };
     
     app.start();
+
 })
-
-
