@@ -7,6 +7,7 @@ const songTitleElement = $('.info-content .title');
 const songArtistElement = $('.info-content .artist');
 const songImageElement = $('.info .img');
 const audioElement = $('#audio');
+const muteBtn = $('.mute-wrap');
 const playBtn = $('.songPlay-wrap');
 const nextSongBtn = $('.nextSong');
 const preSongBtn = $('.preSong');
@@ -27,7 +28,7 @@ fetch(url, options)
     app = data;
     var currentIndex = 0;
     app.isPlay = false;
-
+    app.isMuted = false;
     
     app.currentSongFn = () => app.album[currentIndex];
 
@@ -60,6 +61,18 @@ fetch(url, options)
           });
           
 // control track
+
+        muteBtn.onclick = () => {
+            if (app.isMuted === false) {
+                contentElement.classList.add('muted');
+                app.isMuted = true;
+                audioElement.muted = app.isMuted;
+            } else {
+                contentElement.classList.remove('muted');
+                app.isMuted = false;
+                audioElement.muted = app.isMuted;
+            }
+        }
 
         document.onkeydown = (e) => {
             switch(e.keyCode) {

@@ -180,14 +180,22 @@ i {
     gap: 20px;
 }
 
-.mute {
+.mute-wrap {
     display: flex;
     justify-content: center;
     gap: 24px;
 }
 
-.player-control-btns .like-icon {
-    
+.mute.muted {
+    display: none;
+}
+
+#content.muted .mute.muted{
+    display: inline-block;
+}
+
+#content.muted .mute.unMute{
+    display: none;
 }
 
 .songPlay.pause {
