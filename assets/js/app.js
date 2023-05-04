@@ -7,6 +7,8 @@ const songTitleElement = $('.info-content .title');
 const songArtistElement = $('.info-content .artist');
 const songImageElement = $('.info .img');
 const audioElement = $('#audio');
+const audioCurrentTimeElement = $('.timebar-number.current')
+const audioTotalTimeElement = $('.timebar-number.total')
 const audioTimeline = $('.timebar-line.current');
 const muteBtn = $('.mute-wrap');
 const playBtn = $('.songPlay-wrap');
@@ -128,8 +130,10 @@ fetch(url, options)
         };
 
         audioElement.ontimeupdate = () => {
-            var totalTimeSong = audioElement.duration;
             var currentTimeSong = audioElement.currentTime;
+            var totalTimeSong = audioElement.duration;
+            audioTotalTimeElement.textContent = totalTimeSong;  
+            audioCurrentTimeElement.textContent = currentTimeSong;
             audioTimeline.style.width = `${(currentTimeSong / totalTimeSong) * 100}%`
         };
     }
@@ -143,8 +147,11 @@ fetch(url, options)
     }
 
     app.songTimeline = () => {
-        var songDuration = audioElement.duration;
-        console.log(songDuration)
+        setTimeout(() => {
+            var totalTimeSong = audioElement.duration;
+            audioTotalTimeElement.textContent = totalTimeSong;
+            audioCurrentTimeElement.textContent = '00:00'
+        }, 200)
     }
 
     app.start = () => {
