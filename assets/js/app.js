@@ -142,7 +142,23 @@ fetch(url, options)
         };
 
         preSongBtn.onclick = (e) => {
-            currentIndex -= 1;
+            if (currentIndex > 0) {
+                currentIndex -= 1;
+                app.loadCurrentSong()
+                contentElement.classList.remove('play');
+                app.isPlay = false;
+            }
+        };
+        
+        nextSongBtn.onclick = (e) => {
+            if (currentIndex < app.album.length - 1) {
+                currentIndex += 1;
+                app.loadCurrentSong()
+                contentElement.classList.remove('play');
+                app.isPlay = false;
+                console.log(app.album.length);
+            } 
+            
         };
 
         audioElement.ontimeupdate = () => {
