@@ -62,17 +62,25 @@ fetch(url, options)
           
 // control track
 
-        audioTimeline.onclick = () => {
-            audioElement.currentTime = ((audioTimeline.value / 1000) * audioElement.duration) / 100;
-            console.log(audioElement.currentTime)
+          function playHandle() {
+            if (app.isPlay === true) {
+                audioElement.pause();
+            } else {
+                audioElement.play();
+            }
+            
+            audioElement.onplay = () => {
+                contentElement.classList.add('play');
+                app.isPlay = true;
+            }
+    
+            audioElement.onpause = () => {
+                contentElement.classList.remove('play');
+                app.isPlay = false;
+            }
         }
 
-        // audioTimeline.onmousedown = () => {
-        //     audioElement.currentTime = ((audioTimeline.value / 1000) * audioElement.duration) / 100;
-        //     console.log(audioElement.currentTime)
-        // }
-
-        muteBtn.onclick = () => {
+        function muteHandle() {
             if (app.isMuted === false) {
                 contentElement.classList.add('muted');
                 app.isMuted = true;
@@ -84,36 +92,27 @@ fetch(url, options)
             }
         }
 
+        audioTimeline.onclick = () => {
+            audioElement.currentTime = ((audioTimeline.value / 1000) * audioElement.duration) / 100;
+            // console.log(audioElement.currentTime)
+        }
+
+        // audioTimeline.onmousedown = () => {
+        //     audioElement.currentTime = ((audioTimeline.value / 1000) * audioElement.duration) / 100;
+        //     console.log(audioElement.currentTime)
+        // }
+
+        muteBtn.onclick = () => {
+            muteHandle()
+        }
+
         document.onkeydown = (e) => {
             switch(e.keyCode) {
             case 32:
-                if (app.isPlay === true) {
-                    audioElement.pause();
-                    
-                } else {
-                    audioElement.play();
-                }
-                
-                audioElement.onplay = () => {
-                    contentElement.classList.add('play');
-                    app.isPlay = true;
-                }
-    
-                audioElement.onpause = () => {
-                    contentElement.classList.remove('play');
-                    app.isPlay = false;
-                }
+                playHandle();
             break;
             case 77:
-                if (app.isMuted === false) {
-                    contentElement.classList.add('muted');
-                    app.isMuted = true;
-                    audioElement.muted = app.isMuted;
-                } else {
-                    contentElement.classList.remove('muted');
-                    app.isMuted = false;
-                    audioElement.muted = app.isMuted;
-                }
+                muteHandle()
                 break;
                 case 37:
                     audioElement.currentTime -= 5;
@@ -124,40 +123,29 @@ fetch(url, options)
         } 
 
         playBtn.onclick = (e) => {
-            if (app.isPlay === true) {
-                audioElement.pause();
-            } else {
-                audioElement.play();
-            }
-            
-            audioElement.onplay = () => {
-                contentElement.classList.add('play');
-                app.isPlay = true;
-            }
-
-            audioElement.onpause = () => {
-                contentElement.classList.remove('play');
-                app.isPlay = false;
-            }
+            playHandle()
         };
 
         preSongBtn.onclick = (e) => {
-            if (currentIndex > 0) {
+            if (currentIndex <= 0) {
+                currentIndex = app.album.length - 1;
+            } else {
                 currentIndex -= 1;
-                app.loadCurrentSong()
-                contentElement.classList.remove('play');
-                app.isPlay = false;
             }
+            app.loadCurrentSong()
+            app.isPlay = false;
+            playHandle()
         };
         
         nextSongBtn.onclick = (e) => {
-            if (currentIndex < app.album.length - 1) {
+            if (currentIndex > app.album.length - 2) {
+                currentIndex = 0
+            } else {
                 currentIndex += 1;
-                app.loadCurrentSong()
-                contentElement.classList.remove('play');
-                app.isPlay = false;
-                console.log(app.album.length);
-            } 
+            }
+            app.loadCurrentSong()
+            app.isPlay = false;
+            playHandle();
             
         };
 
