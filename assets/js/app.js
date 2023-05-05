@@ -13,7 +13,9 @@ const audioTimeline = $('#timeline');
 const muteBtn = $('.mute-wrap');
 const playBtn = $('.songPlay-wrap');
 const nextSongBtn = $('.nextSong');
-const preSongBtn = $('.preSong');
+const prevSongBtn = $('.preSong');
+const repeatBtn = $('.repeat-btn')
+const shuffleBtn = $('.shuffle-btn')
 var app;
 
 // const url = 'http://84.46.246.159:1153/api/data';
@@ -27,11 +29,16 @@ const options = {
 
 fetch(url, options)
 .then((data) => data.json())
+.then((data) => {
+    return app = data;
+})
 .then(data => {
     app = data;
     var currentIndex = 0;
     app.isPlay = false;
     app.isMuted = false;
+    app.isRepeat = false;
+    app.isShuffle = false;
     
     app.currentSongFn = () => app.album[currentIndex];
 
@@ -62,7 +69,7 @@ fetch(url, options)
           
 // control track
 
-          function playHandle() {
+        function playHandle() {
             if (app.isPlay === true) {
                 audioElement.pause();
             } else {
@@ -80,6 +87,7 @@ fetch(url, options)
             }
         }
 
+
         function muteHandle() {
             if (app.isMuted === false) {
                 contentElement.classList.add('muted');
@@ -92,9 +100,54 @@ fetch(url, options)
             }
         }
 
+        function prevSong() {
+            if (currentIndex <= 0) {
+                currentIndex = app.album.length - 1;
+            } else {
+                currentIndex -= 1;
+            }
+            app.loadCurrentSong()
+            app.isPlay = false;
+            playHandle()
+        }
+
+        function nextSong() {
+            if (currentIndex > app.album.length - 2) {
+                currentIndex = 0
+            } else {
+                currentIndex += 1;
+            }
+            app.loadCurrentSong()
+            app.isPlay = false;
+            playHandle();            
+        }
+
+        function repeatShufftleBtn(btnFn, handleVar) {
+            if (app[handleVar] === false) {
+                btnFn.classList.add('active');
+                app[handleVar] = true;
+            } else {
+                btnFn.classList.remove('active');
+                app[handleVar] = false;
+            }
+        }
+
+        function randomSong() {
+            let newIndex
+            do {
+                newIndex = Math.floor(Math.random() * app.album.length)
+            } while(newIndex == currentIndex)
+            currentIndex = newIndex;
+            app.loadCurrentSong();
+            app.isPlay = false;
+            playHandle();
+        }
+    
+
         audioTimeline.onclick = () => {
             audioElement.currentTime = ((audioTimeline.value / 1000) * audioElement.duration) / 100;
-            // console.log(audioElement.currentTime)
+            app.isPlay = false;
+            playHandle();
         }
 
         // audioTimeline.onmousedown = () => {
@@ -126,28 +179,26 @@ fetch(url, options)
             playHandle()
         };
 
-        preSongBtn.onclick = (e) => {
-            if (currentIndex <= 0) {
-                currentIndex = app.album.length - 1;
+
+        prevSongBtn.onclick = (e) => {
+            if (app.isShuffle === true) {
+                randomSong();
             } else {
-                currentIndex -= 1;
+                prevSong();
             }
-            app.loadCurrentSong()
-            app.isPlay = false;
-            playHandle()
         };
         
         nextSongBtn.onclick = (e) => {
-            if (currentIndex > app.album.length - 2) {
-                currentIndex = 0
+            if (app.isShuffle === true) {
+                randomSong();
             } else {
-                currentIndex += 1;
+                nextSong();
             }
-            app.loadCurrentSong()
-            app.isPlay = false;
-            playHandle();
-            
         };
+
+        audioElement.onended = () => {
+            randomSong();
+        }
 
         audioElement.ontimeupdate = () => {
             var currentTimeSong = audioElement.currentTime;
@@ -156,10 +207,18 @@ fetch(url, options)
             audioCurrentTimeElement.textContent = `${Math.floor(currentTimeSong / 60).toString().padStart(2, '0')}:${Math.floor(currentTimeSong % 60).toString().padStart(2, '0')}`;
             audioTimeline.value = `${(currentTimeSong / totalTimeSong) * 100000}`
         };
+
+        repeatBtn.onclick = () => {
+            repeatShufftleBtn(repeatBtn, "isRepeat")
+        }
+
+        shuffleBtn.onclick = () => {
+            repeatShufftleBtn(shuffleBtn, "isShuffle")
+        }
     }
 
     app.loadCurrentSong = () => {
-        var currentSong = app.currentSongFn();
+        currentSong = app.currentSongFn();
         songTitleElement.textContent = currentSong.title;
         songArtistElement.textContent = currentSong.artist;
         songImageElement.src = currentSong.image;

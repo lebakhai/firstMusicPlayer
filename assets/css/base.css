@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    transition: 0.2s;
 }
 
 @media (min-width: 1024px) {
@@ -37,10 +38,7 @@
         font-size: 12px;
     }
     .control-footer {
-        font-size: 12px !important;
-    }
-    .control-track {
-        font-size: 16px;
+        font-size: 16px !important;
     }
 }
 

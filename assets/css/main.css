@@ -180,6 +180,10 @@ i {
     
 }
 
+.player-control-btn.active .icon {
+    color: #EAF0FF;
+}
+
 .mute-wrap {
     display: flex;
     justify-content: center;
