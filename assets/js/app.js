@@ -9,7 +9,7 @@ const songImageElement = $('.info .img');
 const audioElement = $('#audio');
 const audioCurrentTimeElement = $('.timebar-number.current')
 const audioTotalTimeElement = $('.timebar-number.total')
-const audioTimeline = $('.timebar-line.current');
+const audioTimeline = $('#timeline');
 const muteBtn = $('.mute-wrap');
 const playBtn = $('.songPlay-wrap');
 const nextSongBtn = $('.nextSong');
@@ -62,6 +62,16 @@ fetch(url, options)
           
 // control track
 
+        audioTimeline.onclick = () => {
+            audioElement.currentTime = ((audioTimeline.value / 1000) * audioElement.duration) / 100;
+            console.log(audioElement.currentTime)
+        }
+
+        // audioTimeline.onmousedown = () => {
+        //     audioElement.currentTime = ((audioTimeline.value / 1000) * audioElement.duration) / 100;
+        //     console.log(audioElement.currentTime)
+        // }
+
         muteBtn.onclick = () => {
             if (app.isMuted === false) {
                 contentElement.classList.add('muted');
@@ -104,6 +114,12 @@ fetch(url, options)
                     app.isMuted = false;
                     audioElement.muted = app.isMuted;
                 }
+                break;
+                case 37:
+                    audioElement.currentTime -= 5;
+                    break;
+                case 39:
+                    audioElement.currentTime += 5;
             }
         } 
 
@@ -134,7 +150,7 @@ fetch(url, options)
             var totalTimeSong = audioElement.duration;
             audioTotalTimeElement.textContent = `${Math.floor(totalTimeSong / 60).toString().padStart(2, '0')}:${Math.floor(totalTimeSong % 60).toString().padStart(2, '0')}`
             audioCurrentTimeElement.textContent = `${Math.floor(currentTimeSong / 60).toString().padStart(2, '0')}:${Math.floor(currentTimeSong % 60).toString().padStart(2, '0')}`;
-            audioTimeline.style.width = `${(currentTimeSong / totalTimeSong) * 100}%`
+            audioTimeline.value = `${(currentTimeSong / totalTimeSong) * 100000}`
         };
     }
 
@@ -144,6 +160,7 @@ fetch(url, options)
         songArtistElement.textContent = currentSong.artist;
         songImageElement.src = currentSong.image;
         audioElement.src = currentSong.music;
+        audioTimeline.value = 0;
     }
 
     app.songTimeline = () => {
@@ -151,6 +168,7 @@ fetch(url, options)
             var totalTimeSong = audioElement.duration;
             audioCurrentTimeElement.textContent = "00:00";
             audioTotalTimeElement.textContent = `${Math.floor(totalTimeSong / 60).toString().padStart(2, '0')}:${Math.floor(totalTimeSong % 60).toString().padStart(2, '0')}`
+            audioTimeline.value = 0;
         }, 250)
     }
 

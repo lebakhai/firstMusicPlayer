@@ -122,39 +122,46 @@ i {
     margin-bottom: 30px;
 }
 
-.timebar-line {
+.timelineBar {
+    width: 100%;
+    position: relative;
+
+}
+
+#timeline {
+    -webkit-appearance: none;
     width: 100%;
     height: 5px;
-    border-radius: 5px;
-    background-color: #555b6a;
-    position: relative;
+    border-radius: 10px;
+    background: #555b6a;
+    overflow: hidden;
     cursor: pointer;
 }
 
-.timebar-line.current {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background-color: #EAF0FF;
-    width: 0%;
-    margin-top: 0;
+#timeline:focus {
+    outline: none;
 }
 
-.timebar-line.current::before {
-    --size: 20px;
-    content: '';
-    background-color: #EAF0FF;
-    width: var(--size);
-    height: var(--size);
-    border-radius: var(--size);
-    display: block;
-    position: absolute;
-    top: 50%;
-    bottom: 50%;
-    right: 0;
-    transform: translateY(-50%);
+#timeline::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    box-shadow: -1000px 0 0 1000px #d5eebb;
+    background-color: #d5eebb;
+    width: 0;
+}
+
+
+#timeline::-moz-range-thumb {
+    box-shadow: -1000px 0 0 1000px #d5eebb;
+    appearance: none;
+    height: 20px;
+    width: 0;
+    border: none;
+}
+
+#timeline::-webkit-slider-runnable-track{
+    background-color: #555b6a;
+    border-radius: 12px;
 }
 
 .control-footer {
