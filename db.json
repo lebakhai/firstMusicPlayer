@@ -39,5 +39,12 @@
     "artist": "AI generateds",
     "image": "https://upload.wikimedia.org/wikipedia/en/9/93/Yoru_ni_Kakeru_cover_art.jpg",
     "music": "./assets/music/AI-racing-into-the-night.mp3"
+},
+{
+    "id": 6,
+    "title": "Tuyu - Trapped in the past",
+    "artist": "Tuyu",
+    "image": "https://steamuserimages-a.akamaihd.net/ugc/1798604069330410708/66C88CD1680CD94E5F24F9184A8DED223371F0F6/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false",
+    "music": "./assets/music/tuyu-Trapped-in-the-past.mp3"
 }
 ]}
