@@ -35,6 +35,7 @@ fetch(url, options)
 .then(data => {
     app = data;
     var currentIndex = 0;
+    var playedSongArr = [];
     app.isPlay = false;
     app.isMuted = false;
     app.isRepeat = false;
@@ -136,8 +137,12 @@ fetch(url, options)
             let newIndex
             do {
                 newIndex = Math.floor(Math.random() * app.album.length)
-            } while(newIndex == currentIndex)
+            } while(newIndex == currentIndex || playedSongArr.includes(newIndex))
             currentIndex = newIndex;
+            playedSongArr.push(newIndex);
+            if(playedSongArr.length >= app.album.length) {
+                playedSongArr = [];
+            }
             app.loadCurrentSong();
             app.isPlay = false;
             playHandle();
@@ -197,7 +202,16 @@ fetch(url, options)
         };
 
         audioElement.onended = () => {
-            randomSong();
+            if (app.isRepeat === true) {
+                audioElement.currentTime = 0;
+                app.isPlay = false;
+                playHandle();
+            }  else if (app.isShuffle === true) {
+                randomSong();
+            } else {
+                nextSong();
+            }
+
         }
 
         audioElement.ontimeupdate = () => {

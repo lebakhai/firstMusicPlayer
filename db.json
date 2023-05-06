@@ -18,5 +18,26 @@
     "artist": "Yoasobi",
     "image": "https://upload.wikimedia.org/wikipedia/en/2/2d/Ano_Yume_o_Nazotte_cover_art.jpg",
     "music": "./assets/music/yoasobi-yume.mp3"
+},
+{
+    "id": 3,
+    "title": "Tuyu - Goodbye to Rock you",
+    "artist": "Tuyu",
+    "image": "https://i1.sndcdn.com/artworks-000668637586-7cqjfa-t500x500.jpg",
+    "music": "./assets/music/tuyu-goodbye-rock.mp3"
+},
+{
+    "id": 4,
+    "title": "JoeJoe Music - Giorno themes",
+    "artist": "JoeJoe Music",
+    "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9dbb1b2d-0c10-4344-8193-72227ac2b144/dejdget-aaca03ba-82f4-4531-be9c-0bd6587f77d5.jpg/v1/fill/w_1280,h_720,q_75,strp/giorno_minimalist_drawing_by_omnishogun_dejdget-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvOWRiYjFiMmQtMGMxMC00MzQ0LTgxOTMtNzIyMjdhYzJiMTQ0XC9kZWpkZ2V0LWFhY2EwM2JhLTgyZjQtNDUzMS1iZTljLTBiZDY1ODdmNzdkNS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.vHHIfNyLwxXxTWaHUUeSNcY19R5ieMevpXm38Lzy2e0",
+    "music": "./assets/music/JoeJoeMusic-giorno.mp3"
+},
+{
+    "id": 5,
+    "title": "AI generated - racing into the night",
+    "artist": "AI generateds",
+    "image": "https://upload.wikimedia.org/wikipedia/en/9/93/Yoru_ni_Kakeru_cover_art.jpg",
+    "music": "./assets/music/AI-racing-into-the-night.mp3"
 }
 ]}
