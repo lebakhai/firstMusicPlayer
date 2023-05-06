@@ -35,7 +35,8 @@ fetch(url, options)
 .then(data => {
     app = data;
     var currentIndex = 0;
-    var playedSongArr = [];
+    var playedSongArr = [0];
+    var footerItems;
     app.isPlay = false;
     app.isMuted = false;
     app.isRepeat = false;
@@ -44,8 +45,8 @@ fetch(url, options)
     app.currentSongFn = () => app.album[currentIndex];
 
     app.render = () => {
-        var htmls = app.album.map((song) => {
-            return `<div class="footer-item">
+        var htmls = app.album.map((song, index) => {
+            return `<div class="footer-item item-${index}">
             <div class="img-wrap">
                 <img src="${song.image}" class="song-img">
             </div>
@@ -53,14 +54,18 @@ fetch(url, options)
                 <h2 class="song-title">${song.title}</h2>
                 <div class="song-artist">${song.artist}</div>
             </div>
+            <div class="footer-icon">
+            <i class="fa-solid play footerPlay fa-circle-play"></i>
+            <i class="fa-solid pause footerPlay fa-circle-pause"></i>
+            </div>
         </div>`
         })
         var html = htmls.join(' ');
         footerElement.innerHTML = html;
     }
     
-
-
+    
+    
     app.handleEvents = () => {
         window.addEventListener('keydown', function(e) {
             if(e.keyCode == 32 && e.target == document.body) {
@@ -79,11 +84,13 @@ fetch(url, options)
             
             audioElement.onplay = () => {
                 contentElement.classList.add('play');
+                footerItems[currentIndex].classList.add('play');
                 app.isPlay = true;
             }
     
             audioElement.onpause = () => {
                 contentElement.classList.remove('play');
+                footerItems[currentIndex].classList.remove('play');
                 app.isPlay = false;
             }
         }
@@ -184,6 +191,31 @@ fetch(url, options)
             playHandle()
         };
 
+        
+        setTimeout(() => {
+            footerItems = $$('.footer-item');
+            footerItems.forEach((item, index) => {
+                item.onclick = (e) => {
+                    currentIndex = index;
+                    app.loadCurrentSong();
+                    app.footerSongHandle()
+                    app.isPlay = false;
+                    playHandle();
+                }
+                    item.querySelector('.play').onclick = (e) => {
+                        e.stopPropagation();
+                        app.isPlay = false;
+                        playHandle();
+                    }
+
+                    item.querySelector('.pause').onclick = (e) => {
+                        e.stopPropagation();
+                        app.isPlay = true;
+                        playHandle();
+                    }
+            })
+        }, 250)
+        
 
         prevSongBtn.onclick = (e) => {
             if (app.isShuffle === true) {
@@ -230,7 +262,7 @@ fetch(url, options)
             repeatShufftleBtn(shuffleBtn, "isShuffle")
         }
     }
-
+    
     app.loadCurrentSong = () => {
         currentSong = app.currentSongFn();
         songTitleElement.textContent = currentSong.title;
@@ -238,6 +270,21 @@ fetch(url, options)
         songImageElement.src = currentSong.image;
         audioElement.src = currentSong.music;
         audioTimeline.value = 0;
+        setTimeout(() => {
+            $$('.footer-item').forEach(item => {
+                item.classList.remove('active')
+            });
+            $(`.footer-item.item-${currentIndex}`).classList.add('active');
+        }, 250)
+    }
+    
+    
+    app.footerSongHandle = () => {
+            $$('.footer-item').forEach(item => {
+                item.classList.remove('active')
+                item.classList.remove('play');
+            });
+            $(`.footer-item.item-${currentIndex}`).classList.add('active');
     }
 
     app.songTimeline = () => {

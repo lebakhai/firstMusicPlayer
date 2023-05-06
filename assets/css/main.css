@@ -251,6 +251,31 @@ i {
     overflow: hidden;
 }
 
+.footer-item.active {
+    background-color: #F45050;
+}
+
+.footer-icon {
+    font-size: 36px;
+    position: absolute;
+    top: 50%;
+    right: 36px;
+    transform: translateY(-50%);
+}
+
+
+.footerPlay.pause {
+    display: none;
+}
+
+.footer-item.play .footerPlay.play {
+    display: none !important;
+}
+
+.footer-item.play .footerPlay.pause {
+    display: inline-block;
+}
+
 .footer .img-wrap {
     height: var(--img-size);
     width: var(--img-size);
@@ -270,7 +295,7 @@ i {
     padding: 12px;
     display: inline-block;
     vertical-align: middle;
-    max-width: calc(100% - 70px);
+    max-width: calc(100% - 250px);
 }
 
 .footer-info .song-title {
