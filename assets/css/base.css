@@ -40,6 +40,9 @@
     .control-footer {
         font-size: 16px !important;
     }
+    .footer-info {
+    max-width: calc(100% - 125px) !important;
+    }
 }
 
 @media (max-width: 499px) {
@@ -49,6 +52,9 @@
     .info .img-wrap {
         width:  300px!important;
         height:  300px!important;
+    }
+    .footer-info {
+        /* max-width: calc(100% - 75px) !important; */
     }
 }
 
